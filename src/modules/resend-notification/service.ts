@@ -93,11 +93,13 @@ class ResendNotificationProviderService extends AbstractNotificationProviderServ
     const url = notification?.data?.url as string;
 
 
+    // Safely access notification.data
+    const data = notification.data || {};
     return await this.sendMail(
       dynamicSubject || 'Admin Team Invitation',
       InviteAdminEmailTemplate({
-        token: notification.data.token as string,
-        user: notification.data.user as { email: string; first_name?: string; last_name?: string },
+        token: (data.token as string) || '',
+        user: (data.user as { email: string; first_name?: string; last_name?: string }) || { email: '' },
       }),
       notification.to
     );
