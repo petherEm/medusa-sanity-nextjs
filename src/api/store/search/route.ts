@@ -14,7 +14,7 @@ export const GET = async (
 
   const products = await engine.searchProducts(
     req.validatedQuery as StoreSearchProductsParamsType,
-    req.listConfig.select
+    req.listConfig.select || []
   );
 
   res.json({
