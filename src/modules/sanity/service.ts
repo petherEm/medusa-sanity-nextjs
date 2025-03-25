@@ -3,6 +3,7 @@ import {
   ProductDTO,
 } from "@medusajs/framework/types"
 import {
+  FirstDocumentMutationOptions,
   SanityClient,
   createClient
 } from "@sanity/client"
